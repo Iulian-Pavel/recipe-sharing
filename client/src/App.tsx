@@ -1,18 +1,16 @@
-import { useState } from 'react'
-import Navbar from './components/Navbar/Navbar'
+import Layout from "./components/Layout/Layout";
+import SignIn from "./pages/SignIn/SignIn";
+
+import "./utils/scss/reset.scss";
 
 function App() {
-  const [count, setCount] = useState<number>(0)
-
   return (
     <>
-      <Navbar />
-      <button onClick={() => setCount(0)}>reset</button>
-      <button onClick={() => setCount(count + 1)}>increment</button>
-      <button onClick={() => setCount(count - 1)}>decrement</button>
-      <p>{count}</p>
+      <Layout>
+        <SignIn />
+      </Layout>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
