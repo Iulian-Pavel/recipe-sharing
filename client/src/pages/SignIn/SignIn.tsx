@@ -4,8 +4,12 @@ import InputAdornment from "@mui/material/InputAdornment";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LockIcon from "@mui/icons-material/Lock";
 import Button from "@mui/material/Button";
+
+
 import type { SignInTypes } from "~/types/signInTypes";
 import { useSignInMutation } from "~/pages/SignIn/api/signInApi";
+
+import { useNavigate } from "react-router";
 
 import { useForm } from "react-hook-form";
 
@@ -15,9 +19,10 @@ import styles from "~/pages/SignIn/SignIn.module.scss";
 function SignIn() {
   const { register, handleSubmit } = useForm<SignInTypes>();
   const [signIn, { error, isLoading }] = useSignInMutation();
+  const navigate = useNavigate();
 
   if (error) {
-    alert(error);
+    alert(JSON.stringify(error));
   }
 
   if (isLoading) {
@@ -28,6 +33,7 @@ function SignIn() {
     try {
       const result = await signIn(data).unwrap();
       console.log(result);
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
