@@ -1,5 +1,8 @@
+require("dotenv").config();
+
 const express = require("express");
 const cors = require("cors");
+const jwt = require("jsonwebtoken");
 
 const utils = require("./utils");
 
@@ -20,12 +23,11 @@ app.post("/sign-in", (req, res) => {
   if (!utils.checkCredentials(username, password)) {
     res.status(403).json({ errorMessage: "Credentials are too short!" });
   } else {
-    res
-      .status(200)
-      .json({
-        message: "Authorization succesfull!",
-        accessToken: "test-token",
-      });
+    const accessToken = jwt.sign(username, process.env.ACCESS_TOKEN_SECRET);
+    res.status(200).json({
+      message: "Authorization succesfull!",
+      accessToken: accessToken,
+    });
   }
 });
 
