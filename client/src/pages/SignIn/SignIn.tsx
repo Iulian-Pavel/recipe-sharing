@@ -22,7 +22,7 @@ function SignIn() {
   const navigate = useNavigate();
 
   if (error) {
-    alert(JSON.stringify(error));
+    console.log(error);
   }
 
   if (isLoading) {
@@ -34,7 +34,7 @@ function SignIn() {
       const result = await signIn(data).unwrap();
       console.log(result);
       navigate("/");
-    } catch (error) {
+    } catch {
       console.log(error);
     }
   };
