@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -13,28 +15,23 @@ import type { SignInTypes } from "~/types/signInTypes";
 import { useSignInMutation } from "~/pages/SignIn/api/signInApi";
 import { paths } from "~/routes/config";
 
+import ErrorDialog from "~/components/ErrorDialog/ErrorDialog";
+
 import styles from "~/pages/SignIn/SignIn.module.scss";
 
 function SignIn() {
+  const [errorOpen, setErrorOpen] = useState<boolean>(false);
   const { register, handleSubmit } = useForm<SignInTypes>();
-  const [signIn, { error, isLoading }] = useSignInMutation();
+  const [signIn] = useSignInMutation();
   const navigate = useNavigate();
-
-  if (error) {
-    console.log(error);
-  }
-
-  if (isLoading) {
-    console.log("Loading");
-  }
 
   const submitFormData = async (data: SignInTypes) => {
     try {
       const result = await signIn(data).unwrap();
       console.log(result);
       navigate(paths.home);
-    } catch {
-      console.log(error);
+    } catch (error) {
+      setErrorOpen(true);
     }
   };
 
@@ -83,7 +80,9 @@ function SignIn() {
           Sign In
         </Button>
       </Box>
+      <ErrorDialog open={errorOpen} onClose={() => setErrorOpen(false)}/>
     </Box>
+
   );
 }
 
