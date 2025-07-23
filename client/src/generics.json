@@ -6,5 +6,14 @@
       "msg": "An error has occured",
       "requestErrorMessage": "An error has occured during your request"
     }
+  ],
+  "SignInPage": [
+    {
+      "GenericDescription": "Used for the sign in page (title, welcome message etc)",
+      "type": "text",
+      "title": "TastyShare",
+      "SignUpText": "New to TastyShare?",
+      "WelcomeMessage": "Welcome To TastyShare!"
+    }
   ]
 }
