@@ -1,0 +1,10 @@
+{
+  "ErrorGenerics": [
+    {
+      "GenericDescription": "Use for when an error occurs somewhere ex: during a request",
+      "type": "error",
+      "msg": "An error has occured",
+      "requestErrorMessage": "An error has occured during your request"
+    }
+  ]
+}
