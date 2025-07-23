@@ -1,10 +1,28 @@
 @use "../../utils/scss/mixins.scss" as mixins;
+@use "../../utils/scss/constants.scss" as constants;
 
 .sign-in-container {
   @include mixins.displayFlex(flex, center, center, 0, wrap, 0);
-  border: 1px solid red;
-  height: 50vh;
+  height: 100vh;
   .sign-in-form {
     @include mixins.displayFlex(flex, center, center, column, wrap, 2em);
+    background: constants.$defaultWhite;
+    padding: 2em;
+    height: 100%;
+    width: 50%;
+  }
+  .sign-in-button {
+    border: 1px solid constants.$highlightColor;
+    background-color: constants.$highlightColor;
+    color: constants.$defaultWhite;
+  }
+  .img-container {
+    object-fit: cover;
+    width: 50%;
+    height: 100%;
+  }
+  a {
+    color: constants.$highlightColor;
+    text-decoration: none;
   }
 }

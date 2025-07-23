@@ -6,8 +6,10 @@ import InputAdornment from "@mui/material/InputAdornment";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LockIcon from "@mui/icons-material/Lock";
 import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 
 import { useNavigate } from "react-router";
+import { Link } from "react-router";
 
 import { useForm } from "react-hook-form";
 
@@ -17,7 +19,11 @@ import { paths } from "~/routes/config";
 
 import ErrorDialog from "~/components/ErrorDialog/ErrorDialog";
 
+import cooking_img from "~/assets/images/cooking.jpg";
+
 import styles from "~/pages/SignIn/SignIn.module.scss";
+
+import generics from "~/generics.json";
 
 function SignIn() {
   const [errorOpen, setErrorOpen] = useState<boolean>(false);
@@ -41,14 +47,43 @@ function SignIn() {
       className={styles["sign-in-container"]}
       onSubmit={handleSubmit(submitFormData)}
     >
+      <Box
+        component="img"
+        className={styles["img-container"]}
+        src={cooking_img}
+      ></Box>
       <Box className={styles["sign-in-form"]}>
+        <Typography
+          component="h1"
+          sx={{
+            fontSize: "3em",
+          }}
+        >
+          {generics.SignInPage[0].title}
+        </Typography>
+        <Typography component="h1">
+          {generics.SignInPage[0].WelcomeMessage}
+        </Typography>
         <TextField
           {...register("username")}
           id="username"
           label="Username"
           name="username"
-          variant="standard"
+          variant="outlined"
           size="medium"
+          sx={{
+            "& .MuiOutlinedInput-root": {
+              "& fieldset": {
+                borderColor: "orange",
+              },
+              "&:hover fieldset": {
+                borderColor: "orange",
+              },
+              "&.MuiFocused fieldset": {
+                borderColor: "orange",
+              },
+            },
+          }}
           slotProps={{
             input: {
               startAdornment: (
@@ -65,7 +100,20 @@ function SignIn() {
           label="Password"
           type="password"
           name="password"
-          variant="standard"
+          variant="outlined"
+          sx={{
+            "& .MuiOutlinedInput-root": {
+              "& fieldset": {
+                borderColor: "orange",
+              },
+              "&:hover fieldset": {
+                borderColor: "darkorange",
+              },
+              "&.Mui-focused fieldset": {
+                borderColor: "orange",
+              },
+            },
+          }}
           slotProps={{
             input: {
               startAdornment: (
@@ -76,13 +124,22 @@ function SignIn() {
             },
           }}
         />
-        <Button variant="outlined" sx={{ textTransform: "none" }} type="submit">
+        <Button
+          variant="outlined"
+          className={styles["sign-in-button"]}
+          type="submit"
+          sx={{
+            textTransform: "none",
+          }}
+        >
           Sign In
         </Button>
+        <Typography variant="body2">
+          {generics.SignInPage[0].SignUpText} <Link to="/">Sign up</Link>
+        </Typography>
       </Box>
-      <ErrorDialog open={errorOpen} onClose={() => setErrorOpen(false)}/>
+      <ErrorDialog open={errorOpen} onClose={() => setErrorOpen(false)} />
     </Box>
-
   );
 }
 
