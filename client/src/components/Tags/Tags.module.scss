@@ -1,0 +1,21 @@
+@use "../../utils/scss/constants.scss" as constants;
+@use "../../utils/scss/mixins.scss" as mixins;
+
+.tags {
+  @include mixins.displayFlex(flex, center, center, row, wrap, 2em);
+  margin-top: 2em;
+  .tag {
+    cursor: pointer;
+    font-family: constants.$fontFamily, sans-serif;
+    color: #000;
+    background-color: rgb(242, 229, 210);
+    padding: 1em;
+    border-radius: constants.$borderRadius;
+    transition: 300ms ease-in-out;
+    &:hover {
+        transition: 300ms ease-in-out;
+        box-shadow: 10px 10px 10px #313131;
+        transform: translateY(-1em);
+    }
+  }
+}
