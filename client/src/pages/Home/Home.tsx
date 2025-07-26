@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 import Header from "~/components/Header/Header";
-import Tags from "~/components/Tags/Tags";
+import Tags from "~/components/Tags/Tags"
 
 import generics from "~/generics.json";
 

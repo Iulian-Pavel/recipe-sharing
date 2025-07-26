@@ -1,14 +1,14 @@
 import Box from "@mui/material/Box";
 import styles from "~/components/Tags/Tags.module.scss";
 
-import { tags } from "~/components/Tags/tags";
+import { foodTags } from "~/components/Tags/foodTags";
 
 function Tags() {
   return (
     <Box className={styles["tags"]}>
-      {tags.map((tag) => (
+      {foodTags.map((foodTag) => (
         <Box className={styles["tag"]}>
-          <p>{tag.tag}</p>
+          <p>{foodTag.tag}</p>
         </Box>
       ))}
     </Box>

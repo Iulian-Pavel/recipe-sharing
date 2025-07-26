@@ -1,4 +1,4 @@
-export const tags = [
+export const foodTags = [
   {
     tag: "Breakfast",
     type: "food",
