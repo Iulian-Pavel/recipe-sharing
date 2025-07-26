@@ -1,0 +1,22 @@
+@use "../../utils/scss/constants.scss" as constants;
+@use "../../utils/scss/mixins.scss" as mixins;
+
+.header {
+  @include mixins.displayFlex(flex, center, flex-start, column, no-wrap, 2em);
+  border-radius: constants.$borderRadius;
+  width: 80%;
+  height: 50vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 2em;
+  margin-left: auto;
+  margin-right: auto;
+  .header-title {
+    font-family: constants.$fontFamily;
+    color: constants.$defaultWhite;
+  }
+  .header-text {
+    font-family: constants.$fontFamily;
+    color: constants.$defaultWhite;
+  }
+}

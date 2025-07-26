@@ -15,5 +15,13 @@
       "SignUpText": "New to TastyShare?",
       "WelcomeMessage": "Welcome To TastyShare!"
     }
+  ],
+  "Header": [
+    {
+      "GenericDescription": "Used for the header",
+      "type": "text",
+      "HeaderTitle": "TastyShare",
+      "HeaderText": "Share your favorite recipes with the world!"
+    }
   ]
 }
