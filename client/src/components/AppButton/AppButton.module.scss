@@ -1,0 +1,11 @@
+@use "../../utils/scss/constants.scss" as constants;
+
+div {
+  .app-button {
+    border: 1px solid constants.$highlightColor;
+    background-color: constants.$highlightColor;
+    font-family: constants.$fontFamily;
+    color: constants.$defaultWhite;
+    text-transform: none;
+  }
+}

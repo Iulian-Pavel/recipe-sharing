@@ -5,7 +5,6 @@ import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LockIcon from "@mui/icons-material/Lock";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
 import { useNavigate } from "react-router";
@@ -18,6 +17,7 @@ import { useSignInMutation } from "~/pages/SignIn/api/signInApi";
 import { paths } from "~/routes/config";
 
 import ErrorDialog from "~/components/ErrorDialog/ErrorDialog";
+import AppButton from "~/components/AppButton/AppButton";
 
 import cooking_img from "~/assets/images/cooking.jpg";
 
@@ -124,16 +124,7 @@ function SignIn() {
             },
           }}
         />
-        <Button
-          variant="outlined"
-          className={styles["sign-in-button"]}
-          type="submit"
-          sx={{
-            textTransform: "none",
-          }}
-        >
-          Sign In
-        </Button>
+        <AppButton buttonText="Sign in"/>
         <Typography variant="body2">
           {generics.SignInPage[0].SignUpText} <Link to="/">Sign up</Link>
         </Typography>
