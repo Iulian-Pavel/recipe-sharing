@@ -7,7 +7,7 @@ function Tags() {
   return (
     <Box className={styles["tags"]}>
       {foodTags.map((foodTag) => (
-        <Box className={styles["tag"]}>
+        <Box className={styles["tag"]} key={foodTag.id}>
           <p>{foodTag.tag}</p>
         </Box>
       ))}
@@ -16,3 +16,4 @@ function Tags() {
 }
 
 export default Tags;
+

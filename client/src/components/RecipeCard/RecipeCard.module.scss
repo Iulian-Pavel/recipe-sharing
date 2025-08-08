@@ -1,0 +1,9 @@
+@use "../../utils/scss/mixins.scss" as mixins;
+
+.cards {
+    @include mixins.displayFlex(flex, center, center, row, wrap, 0);
+    margin-top: 2em;
+    color: red;
+    border: 1px solid red;
+    width: 100%;
+}

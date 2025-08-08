@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 
 import Header from "~/components/Header/Header";
-import Tags from "~/components/Tags/Tags"
+import Tags from "~/components/Tags/Tags";
+import RecipeCard from "~/components/RecipeCard/RecipeCard";
 
 import generics from "~/generics.json";
 
@@ -24,6 +25,7 @@ function Home() {
         headerCoverImage={header_cover}
       />
       <Tags />
+      <RecipeCard />
     </>
   );
 }
