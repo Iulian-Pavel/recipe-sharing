@@ -27,6 +27,7 @@ import generics from "~/generics.json";
 
 function SignIn() {
   const [errorOpen, setErrorOpen] = useState<boolean>(false);
+  const [error, setError] = useState<string | undefined>("");
   const { register, handleSubmit } = useForm<SignInTypes>();
   const [signIn] = useSignInMutation();
   const navigate = useNavigate();
@@ -36,8 +37,11 @@ function SignIn() {
       const result = await signIn(data).unwrap();
       console.log(result);
       navigate(paths.home);
-    } catch (error) {
+    } catch (error: unknown) {
       setErrorOpen(true);
+      const err = error as { data?: {errorMessage?: string } }
+      console.log(err.data?.errorMessage)
+      setError(err.data?.errorMessage);
     }
   };
 
@@ -124,12 +128,12 @@ function SignIn() {
             },
           }}
         />
-        <AppButton buttonText="Sign in"/>
+        <AppButton buttonText="Sign in" type="submit"/>
         <Typography variant="body2">
           {generics.SignInPage[0].SignUpText} <Link to="/">Sign up</Link>
         </Typography>
       </Box>
-      <ErrorDialog open={errorOpen} onClose={() => setErrorOpen(false)} />
+      <ErrorDialog open={errorOpen} onClose={() => setErrorOpen(false)} errorMessage={error} />
     </Box>
   );
 }

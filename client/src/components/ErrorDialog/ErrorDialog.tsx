@@ -10,17 +10,18 @@ import generics from "~/generics.json";
 
 type ErrorDialogProps = {
   open: boolean;
+  errorMessage: string | undefined;
   onClose: () => void;
 };
 
-function ErrorDialog({ open, onClose }: ErrorDialogProps) {
+function ErrorDialog({ open, onClose, errorMessage }: ErrorDialogProps) {
   return (
     <>
       <Dialog open={open}>
         <DialogTitle>{generics.ErrorGenerics[0].msg}</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            {generics.ErrorGenerics[0].requestErrorMessage}
+            {errorMessage}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
