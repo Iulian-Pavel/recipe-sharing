@@ -4,22 +4,9 @@ dotenv.config();
 import express from "express";
 import cors from "cors";
 import jwt from "jsonwebtoken";
-import utils from "./utils.js";
-import mongoose from "mongoose";
-import RecipeModal from "./model/RecipeModal.js";
+// import { checkCredentials } from "./utils.js";
 
-const DB_URL = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@recipewebsite.xr2msjj.mongodb.net/`;
-
-const DB_CONNECTION = async () => {
-  try {
-    await mongoose.connect(DB_URL);
-    console.log("connected to database");
-  } catch (error) {
-    console.log("Error connecting to database: ", error);
-  }
-};
-
-DB_CONNECTION();
+import { connectDB } from "./connection.js";
 
 const app = express();
 const PORT = 4000;
@@ -27,6 +14,8 @@ const PORT = 4000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+
+connectDB();
 
 app.get("/", (req, res) => {
   res.send("default route");
