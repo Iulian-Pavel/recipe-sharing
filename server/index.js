@@ -4,7 +4,7 @@ dotenv.config();
 import express from "express";
 import cors from "cors";
 import jwt from "jsonwebtoken";
-// import { checkCredentials } from "./utils.js";
+import { hasValidCredentials } from "./utils.js";
 
 import { connectDB } from "./connection.js";
 
@@ -24,9 +24,8 @@ app.get("/", (req, res) => {
 app.post("/sign-in", (req, res) => {
   const { username, password } = req.body;
   console.log(`received form details ${username}, ${password}`);
-  if (!utils.checkCredentials(username, password)) {
+  if (!hasValidCredentials(username, password)) {
     res.status(403).json({ errorMessage: "Credentials are too short!" });
-    utils.explode();
   } else {
     const accessToken = jwt.sign(username, process.env.ACCESS_TOKEN_SECRET);
     res.status(200).json({
@@ -36,21 +35,7 @@ app.post("/sign-in", (req, res) => {
   }
 });
 
-app.post("/upload-recipe", async (req, res) => {
-  const { title, postedBy, likes } = req.body;
-  try {
-    const recipe = new RecipeModal({
-      title: title,
-      postedBy: postedBy,
-      likes: likes,
-    });
-    await recipe.save();
-    res.send("Recipe saved succesfull")
-  } catch (error) {
-    res.send("Error saving object: ", error);
-  }
-});
 
 app.listen(PORT, () => {
-  console.log("server is running");
-});
+  console.log("Server running on port", PORT);
+})
